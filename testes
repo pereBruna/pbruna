@@ -1,0 +1,66 @@
+/*
+Faça um programa em C que faça a leitura dos votos das eleições para presidente de turma
+de uma determinada turma. Ao todo serão 4 candidatos: o candidato número 1, o número 2, o
+número 3 e o número 4. Todos os alunos da turma têm direito a votar apenas uma única vez e
+certamente em apenas um único candidato. Ao iniciar as eleições, todos os candidatos começam
+com a quantidade zerada de votos. À medida que cada aluno for votando (no 1, 2, 3 ou 4), o
+candidato irá recebendo votos. A eleição termina quando o professor responsável pela eleição
+digitar o valor 0 (zero). Qualquer valor diferente de 1, 2, 3, 4 ou zero deve ser desconsiderado
+pelo programa. O programa deve exibir:
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+int main(){
+	
+	int voto=0, cont=0, candi1=0, candi2=0, candi3=0, candi4=0, ganhado;
+	
+	setlocale(LC_ALL, "Portuguese");
+	
+	printf("\n\t\tEleições para presidente de turma\n");
+	printf("\n\n\t\tCantidatos válidos (1, 2, 3 ou 4):\n\n");
+	printf("\t\tPara sair precione 0\n\n");
+
+	do{
+		printf("\n\t\tVote em algum candidato válido:");
+		scanf("%d", &voto);
+		if(voto==1){                     //contagem de votos
+			candi1++;
+		}if(voto==2){
+			candi2++;
+		}if(voto==3){
+			candi3++;
+		}if(voto==4){
+			candi4++;
+		}
+		cont = candi1 + candi2 + candi3 + candi4; //soma dos votos
+	}while(voto!=0);
+	
+	//resultado da soma dos votos
+	printf("\nTotal de votos:%d\n\n", cont); 
+	
+	//quantidade de votos por canditados
+	printf("\nVotos do candidato 1:%d", candi1);
+	printf("\nVotos do candidato 2:%d", candi2);
+	printf("\nVotos do candidato 3:%d", candi3);
+	printf("\nVotos do candidato 4:%d", candi4);
+	
+	
+	//termo de vitoria
+	if(candi1 > candi2 && candi1 > candi3 && candi1 > candi4){
+			printf("\n\nO candidato 1 venceu as eleições\n\n");
+	}if(candi2 > candi1 && candi2 > candi3 && candi2 > candi4){
+			printf("\n\nO candidato 2 venceu as eleições\n\n");
+	}if(candi3 > candi1 && candi3 > candi2 && candi3 > candi4){
+			printf("\n\nO candidato 3 venceu as eleições\n\n");
+	}if(candi4 > candi1 && candi4 > candi2 && candi4 > candi3){
+			printf("\n\nO candidato 4 venceu as eleições\n\n");
+	}else{
+		printf("\n\n\t\tocorreu um empate\n\n");
+	}
+	
+	system("pause");
+	return 0;
+}
